@@ -24,6 +24,10 @@
   .header-cont {
     display: block;
   }
+  .header-logo img
+  {
+    max-width: fit-content;
+  }
 }
 .header-logo {
   padding: 0 12px;
@@ -50,6 +54,11 @@
 .main-nav {
   padding-top: 17px;
   height: 56px;
+}
+@media only screen and (max-width: 768px) {
+  .main-nav {
+    display: none;
+  }
 }
 
 .header-nav-list li:last-child {
@@ -120,6 +129,12 @@
 
 .action-container p {
   margin: 0 10px;
+}
+@media only screen and (max-width: 768px) {
+  .action-container
+  {
+    display: none;
+  }
 }
 
 .btn-login {
