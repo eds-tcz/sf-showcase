@@ -1,0 +1,137 @@
+/* eslint-disable no-descending-specificity */
+/* stylelint-disable declaration-block-no-shorthand-property-overrides */
+/* stylelint-disable selector-not-notation */
+
+.sfb-header-2-container {
+  margin: 0 !important;
+}
+
+.sfb-header-2-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
+.header-cont {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e6e6e6;
+  background-color: #fff;
+  height: 56px;
+}
+@media only screen and (max-width: 768px) {
+  .header-cont {
+    display: block;
+  }
+}
+.header-logo {
+  padding: 0 12px;
+}
+
+.header-logo img {
+  height: 40px;
+}
+
+.header-nav-list {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  padding-top: 7px;
+}
+
+.header-nav-list li {
+  margin: 0 5px;
+  display: flex;
+}
+
+.main-nav {
+  padding-top: 17px;
+  height: 56px;
+}
+
+.header-nav-list li:last-child {
+  background-color: #f78f35;
+  padding: 6px 10px 8px 12px;
+  border-radius: 20px;
+  margin-top: -6px;
+}
+
+.header-nav-list li:last-child a {
+  color: #fff;
+}
+
+.header-nav-list li:last-child:hover {
+  color: #6d6d49;
+}
+
+.header-nav-list li:last-child::after {
+  top: 7px !important;
+  margin-left: 2px !important;
+  content: '';
+  width: 14px;
+  height: 14px;
+  background-image: url(../../images/header/arrow-white.png);
+  background-size: 10px !important;
+  background-repeat: no-repeat;
+  position: relative;
+  border: none;
+  bottom: 0;
+  margin: auto;
+  transition: transform 0.3s ease-in-out;
+  background-size: 100%;
+  vertical-align: middle !important;
+  left: 4px;
+}
+
+.header-nav-list
+  li:not(:nth-child(6)):not(:nth-child(7)):not(:nth-child(9))::after {
+  content: '';
+  width: 14px;
+  height: 14px;
+  background-image: url(../../images/header/dropdown-menu-mobile.png.png);
+  background-size: 26px;
+  background-repeat: no-repeat;
+  position: relative;
+  border: none;
+  right: 20px;
+  top: -3px;
+  bottom: 0;
+  margin: auto;
+  transition: transform 0.3s ease-in-out;
+  background-size: 100%;
+  vertical-align: middle !important;
+  left: 2px;
+}
+
+.header-nav-list a {
+  text-decoration: none;
+  color: #333;
+  font-size: 13.5px;
+  /* padding-top: 5px; */
+}
+
+.action-container {
+  align-items: center;
+  display: flex;
+}
+
+.action-container p {
+  margin: 0 10px;
+}
+
+.btn-login {
+  background-color: #f38d36;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 15px;
+  font-size: 14px;
+}
+
+.search-icon img {
+  height: 20px;
+  cursor: pointer;
+}

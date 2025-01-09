@@ -1,0 +1,80 @@
+.section.whats-new-text-container {
+  background-color: #229e82;
+  padding: 15px 40px;
+  padding-bottom: 30px;
+  position: relative;
+  margin: 0;
+}
+
+.whats-new-text-wrapper::before {
+  position: absolute;
+  content: '';
+  background-image: url('../../images/carousel/whats-new1.png');
+  background-repeat: no-repeat;
+  background-size: 9em;
+  width: 10rem;
+  left: 0%;
+  height: 10rem;
+  top: -68%;
+}
+
+.whats-new-text-wrapper::after {
+  position: absolute;
+  content: '';
+  background-image: url('../../images/carousel/whatsnew2.png');
+  background-repeat: no-repeat;
+  background-size: 7.5rem;
+  width: 8.5rem;
+  right: 0%;
+  height: 8.5em;
+  bottom: -72%;
+}
+
+.whats-new-text-wrapper > div > div {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+#whats-new {
+  margin: 0;
+  font-size: 30px;
+  /* font-family: 'Roboto-Medium'; */
+}
+
+.whats-new-text-wrapper p {
+  line-height: 1.2;
+  width: 90%;
+  font-size: 18px;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.whats-new-text-wrapper .button-container {
+  width: 30%;
+}
+
+.whats-new-text-wrapper .button-container a {
+  font-size: 17px;
+  background-color: #f78f35;
+  color: #fff;
+  padding: 9px 24px;
+  display: inline-block;
+  border-radius: 27px;
+  text-align: center;
+  border: 1px #f78f35 solid;
+  transition: 0.3s;
+}
+
+.whats-new-text-wrapper .button-container a:hover {
+  background-color: #f1f1f1 !important;
+  color: #f78f35;
+}
+@media only screen and (max-width: 768px) {
+  .whats-new-text-wrapper::before {
+    position: relative;
+  }
+  .whats-new-text-wrapper::after {
+    position: relative;
+  }
+}

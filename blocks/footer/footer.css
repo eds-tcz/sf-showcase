@@ -1,17 +1,23 @@
 footer {
-  background-color: var(--light-color);
+  /* background-color: var(--light-color); */
+  background-color: #2b2b2b;
   font-size: var(--body-font-size-xs);
 }
 
 footer .footer > div {
   margin: auto;
   max-width: 1200px;
-  padding: 40px 24px 24px;
+  padding: 50px 24px 24px !important;
 }
 
 footer .footer p {
   margin: 0;
 }
+
+/* footer.block .section.accordion-container{
+  display: flex;
+  gap: 80px;
+} */
 
 @media (width >= 900px) {
   footer .footer > div {

@@ -1,0 +1,117 @@
+.section.accordion-container {
+  display: flex;
+  gap: 70px;
+  margin: auto;
+}
+@media only screen and (max-width: 768px) {
+  .section.accordion-container {
+    display: block !important;
+  }
+}
+.footer-icon-wrapper {
+  width: 40%;
+}
+
+.footer-icon-wrapper img {
+  height: auto;
+  width: 38%;
+}
+
+.accordion details {
+  background-color: #2b2b2b;
+}
+
+.accordion details + details {
+  margin-top: 12px;
+}
+
+.accordion details p {
+  margin-bottom: 0.5em;
+}
+
+.accordion details summary {
+  position: relative;
+  cursor: pointer;
+  list-style: none;
+  /* transition: background-color 0.2s; */
+}
+
+.accordion details summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion details summary::after {
+  content: '\02795';
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+  transform: none;
+  border: none;
+  position: absolute;
+  top: 18%;
+  right: -3px;
+}
+
+.accordion details[open] summary::after {
+  /* transform: translateY(-50%) rotate(-45deg); */
+  top: 30%;
+  right: 20px;
+  content: '\2796';
+}
+
+.accordion details[open] .accordion-item-label {
+  color: #f3f3f3;
+  width: 240% !important;
+  background-color: #444;
+  padding: 10px 20px;
+  z-index: 1 !important;
+  position: relative;
+  border-left: 3px solid #ff8922;
+}
+
+.accordion-wrapper {
+  width: 100%;
+}
+
+.accordion.block {
+  width: 100%;
+}
+
+.accordion-item {
+  cursor: pointer;
+  padding-bottom: 12px;
+  font-size: 14px;
+  background-color: #444;
+  color: #fff;
+  border: none;
+  border-bottom: 1px solid #494949 !important;
+  /* font-family: "Roboto-Regular" !important; */
+}
+
+.accordion .accordion-item-body {
+  color: #dadada;
+  font-size: 13px;
+  width: 240% !important;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #444;
+  padding: 13px 20px;
+  z-index: 1 !important;
+  position: relative;
+  border-left: 3px solid #ff8922;
+}
+
+.accordion .accordion-item-body p {
+  width: 50%;
+  line-height: 1 !important;
+  padding: 8px 0;
+}
+
+.accordion-item-body ul {
+  padding: 0 15px;
+}
+
+.accordion.block > .accordion-item:last-child {
+  border-bottom: none !important;
+}

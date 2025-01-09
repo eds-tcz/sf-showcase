@@ -116,6 +116,8 @@ async function loadLazy(doc) {
  */
 function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
+  window.setTimeout(() => import('./libs/sfb-multi-cards-ext.js'), 500);
+  window.setTimeout(() => import('./libs/sfb-digi-fd-ext.js'), 1000);
   window.setTimeout(() => import('./delayed.js'), 3000);
   // load anything that can be postponed to the latest here
 }

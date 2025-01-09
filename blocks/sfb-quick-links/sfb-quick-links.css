@@ -1,0 +1,245 @@
+.sfb-quick-links-container {
+  margin: 0 !important;
+  position: relative;
+}
+
+.sfb-quick-links-wrapper {
+  /* padding: 0 6.5vw !important; */
+  /* position: relative; */
+}
+
+.sfb-quick-links-wrapper::before {
+  background-image: url(../../images/quickLinks/above-footer1.png);
+  content: '';
+  position: absolute;
+  width: 11rem;
+  height: 9rem;
+  top: -23px;
+  left: 0;
+  z-index: 9;
+  background-repeat: no-repeat;
+}
+
+.sfb-quick-links-wrapper::after {
+  background-image: url(../../images/quickLinks/above-footer2.png);
+  content: '';
+  position: absolute;
+  width: 10rem;
+  height: 10rem;
+  top: 20px;
+  right: 0;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.quick-links {
+  background: linear-gradient(-90deg, #f2dfb3 0, #f5f5f5 30%);
+  padding: 10px 15px 15px;
+  border-radius: 30px 30px 0 0;
+  z-index: 1;
+  position: relative;
+  display: flex;
+  margin: 0 -35px;
+  justify-content: space-around;
+}
+@media only screen and (max-width: 768px) {
+  .quick-links {
+    display: block !important;
+  }
+  .sfb-quick-links-wrapper::after {
+    display: none !important;
+  }
+}
+
+.ql-col-1 {
+  max-width: 19% !important;
+  padding-left: 0.5rem !important;
+  position: relative;
+}
+
+.ql-col-1 h3,
+.ql-col-2 h3,
+.ql-col-3 h3,
+.ql-col-4 h3,
+.ql-col-5 h3 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 0 0 16px;
+  padding: 0 12px;
+}
+
+.ql-col-1 p {
+  width: fit-content;
+  position: relative;
+  margin: -5px 0 0 !important;
+  line-height: 31px;
+  letter-spacing: 0px;
+  background-color: #0e6161;
+  color: #fff;
+  font-family: 'Roboto-Regular';
+  border: 1px solid #fff;
+  border-radius: 30px;
+  padding: 4px 43px;
+  appearance: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.ql-col-1 p::before {
+  content: '';
+  background-image: url(../../images/quickLinks/branch-locator.png);
+  position: absolute;
+  background-size: 20px;
+  top: -4px;
+  bottom: 0;
+  margin: auto;
+  left: 18px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+}
+
+.ql-col-1 p::after {
+  border: none;
+  background-image: url(../../images/quickLinks/arrow-white.png);
+  background-repeat: no-repeat;
+  content: '';
+  position: absolute;
+  background-size: 12px;
+  width: 16px;
+  height: 11px;
+  right: 20px;
+  top: 5px;
+  bottom: 0;
+  margin: auto;
+}
+
+.ql-col-1 ul {
+  padding: 10px;
+  width: 72%;
+  right: 15px;
+  padding-bottom: 0;
+  z-index: 9;
+  position: absolute;
+  border: 0.8px;
+  background-color: #fff;
+  border-radius: 6px;
+  width: 160px;
+  margin-top: 0;
+  right: auto;
+  display: none;
+}
+
+.ql-col-1 ul li {
+  font-size: 14px;
+  margin-bottom: 5px;
+  font-weight: 700;
+  display: block;
+  text-decoration: none;
+}
+
+.ql-col-1 ul li a {
+  font-size: 16px;
+  display: inline-block;
+  color: #0e6161;
+}
+
+.ql-col-2 {
+  max-width: 15% !important;
+  width: 100%;
+  flex-shrink: 0;
+  padding: 0 12px;
+}
+
+.ql-col-2 p {
+  position: relative;
+  top: 2px;
+  display: flex;
+}
+
+.ql-col-2 p img {
+  margin: 0 2px;
+  display: inline;
+  height: auto;
+  max-width: 100%;
+  width: 30px;
+}
+
+.ql-col-3 {
+  margin: 0 26px 0 21px;
+  padding: 0 4px 0 0;
+}
+
+.ql-col-3 p {
+  margin: 0 !important;
+}
+
+.ql-col-3 p picture:first-child {
+  padding: 0 8px 0 0;
+  width: 36px;
+  display: inline;
+  height: auto;
+  max-width: 100%;
+}
+
+.ql-col-3 p picture:nth-child(2),
+.ql-col-3 p picture:nth-child(3) {
+  padding: 0 0 0 4px;
+  width: 101px;
+  padding-left: 0.25rem !important;
+}
+
+.ql-col-3::after {
+  position: absolute;
+  border-right: 1.5px solid #adadad75;
+  content: '';
+  height: 68px;
+  width: 1.5px;
+  right: 450px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.ql-col-4 {
+  max-width: 21% !important;
+  flex: 0 0 auto;
+}
+
+.ql-col-4 p {
+  margin: 8px 0 0 0 !important;
+  padding: 0 12px;
+}
+
+.ql-col-4 p picture:first-child img {
+  margin: 0 7px;
+  max-width: 70px !important;
+  display: inline;
+  height: 31px;
+  width: 7.2rem;
+  margin-top: -4px;
+}
+
+.ql-col-5 {
+  max-width: 15% !important;
+}
+
+.ql-col-5 p {
+  margin: 0 !important;
+  padding: 0 12px;
+}
+@media only screen and (max-width: 768px) {
+  .sfb-quick-links-wrapper::before
+  {
+    position: relative;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .ql-col-1, .ql-col-2, .ql-col-4, .ql-col-5
+  {
+    max-width: 100% !important;
+  }
+}

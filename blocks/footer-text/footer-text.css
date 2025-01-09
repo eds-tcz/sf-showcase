@@ -1,0 +1,25 @@
+.footer-text.block> :first-child {
+  display: flex;
+  width: 104%;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  margin-top: 22px;
+  border-top: 1px solid #494949;
+}
+
+.footer-text.block div p {
+  color: #dadada;
+  font-size: 14px;
+  padding: 1rem 0 1.3rem;
+  line-height: 31px;
+  font-family: 'Roboto-Regular';
+
+}
+
+.footer-text.block .button-container a {
+  color: #dadada;
+  font-size: 14px;
+  padding: 1rem 0 1.3rem;
+  background: none;
+}

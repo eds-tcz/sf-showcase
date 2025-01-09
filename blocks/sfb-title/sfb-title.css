@@ -1,0 +1,26 @@
+.head-para-1 {
+    font-family: "Roboto-Bold";
+    color: #229e82;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.sfb-heading{
+    text-align: center;
+}
+
+.sfb-heading h2{
+    margin: 0 0 16px;
+    font-size: 35px;
+    font-weight: 500;
+}
+
+.columns-container .sfb-heading h2 {
+    margin: 0 0 4px !important;
+}
+
+.head-para-2 {
+    padding: 0 0 40px;
+    margin: 0;
+}
