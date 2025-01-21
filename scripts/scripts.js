@@ -115,31 +115,51 @@ async function loadLazy(doc) {
  * without impacting the user experience.
  */
 function loadDelayed() {
-  // eslint-disable-next-line import/no-cycle
-  window.setTimeout(() => import('./libs/sfb-multi-cards-ext.js'), 500);
-  window.setTimeout(() => import('./libs/sfb-digi-fd-ext.js'), 1000);
-  window.setTimeout(() => import('./delayed.js'), 3000);
-  // load anything that can be postponed to the latest here
+  const timeout = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+  
+  // Use Promise-based setTimeout for better error handling
+  Promise.all([
+    timeout(500).then(() => import('./libs/sfb-multi-cards-ext.js')),
+    timeout(1000).then(() => import('./libs/sfb-digi-fd-ext.js')),
+    timeout(3000).then(() => import('./delayed.js'))
+  ]).catch(error => {
+    console.error('Error in delayed loading:', error);
+  });
 }
 
 async function loadPage() {
-  // Load GTM first, before any other operations
-  loadGTM();
-  
   try {
+    // Load core content first
     await loadEager(document);
     await loadLazy(document);
+    
+    // Load GTM separately - won't block page rendering
+    try {
+      loadGTM();
+    } catch (gtmError) {
+      console.error('GTM loading error:', gtmError);
+      // Continue loading page even if GTM fails
+    }
+    
+    // Start delayed loading
     loadDelayed();
+    
   } catch (error) {
-    console.error('Error during page load:', error);
+    console.error('Critical loading error:', error);
+    // At least show some content to the user
+    document.body.style.visibility = 'visible';
   }
 }
 
-// Optional: Add this to ensure GTM loads even if the main script fails
 document.addEventListener('DOMContentLoaded', () => {
-  if (!window.dataLayer) {
-    loadGTM();
-  }
+  loadPage().catch(error => {
+    console.error('Page load failed:', error);
+    // Ensure page is visible even if loading fails
+    document.body.style.visibility = 'visible';
+  });
 });
+
+// Export for module usage if needed
+export { loadDelayed, loadGTM, loadPage };
 
 loadPage();
