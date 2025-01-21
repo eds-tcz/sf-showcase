@@ -29,8 +29,8 @@
 }
 
 .marquee-img img {
-      width: 75%;
-    height: auto;
+      width: 100%;
+    height: 30px;
     display: inline;
     max-width: 100%;
     }
@@ -38,7 +38,7 @@
     .static-title .marquee-text {
     position: absolute;
     top: 12%;
-    left: 35%;
+    left: 47%;
     transform: translate(-50%, -50%);
     font-size: 13px;
     color: #fff;
@@ -48,7 +48,7 @@
       display: inline-block;
       white-space: nowrap;
       overflow: hidden;
-      animation: marquee 160s linear infinite;
+      animation: marquee 140s linear infinite;
     }
 
     .marquee-content p {

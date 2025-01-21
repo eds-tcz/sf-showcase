@@ -178,17 +178,24 @@
 
 .ql-col-3 p picture:first-child {
   padding: 0 8px 0 0;
-  width: 36px;
+  width: 36px !important;
   display: inline;
   height: auto;
   max-width: 100%;
+  height: 40px;
 }
 
-.ql-col-3 p picture:nth-child(2),
-.ql-col-3 p picture:nth-child(3) {
+.ql-col-3 p picture:nth-child(2)
+ {
   padding: 0 0 0 4px;
-  width: 101px;
+  width: 110px !important;
+  height: 31px;
   padding-left: 0.25rem !important;
+}
+.ql-col-3 p picture:nth-child(3) img
+{
+  width: 110px !important;
+  height: 31px;
 }
 
 .ql-col-3::after {
@@ -211,6 +218,7 @@
 .ql-col-4 p {
   margin: 8px 0 0 0 !important;
   padding: 0 12px;
+  display: flex;
 }
 
 .ql-col-4 p picture:first-child img {
@@ -221,7 +229,11 @@
   width: 7.2rem;
   margin-top: -4px;
 }
-
+.ql-col-4 p picture:nth-child(2) img
+{
+  height: 31px;
+    width: 101px;
+}
 .ql-col-5 {
   max-width: 15% !important;
 }
@@ -229,6 +241,12 @@
 .ql-col-5 p {
   margin: 0 !important;
   padding: 0 12px;
+  display: flex;
+}
+.ql-col-5 p picture img
+{
+  width: 46px;
+  height: 40px;
 }
 @media only screen and (max-width: 768px) {
   .sfb-quick-links-wrapper::before
