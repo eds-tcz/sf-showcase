@@ -46,6 +46,10 @@
   .quick-links {
     display: block !important;
   }
+  .ql-col-1
+  {
+    width: fit-content;
+  }
   .sfb-quick-links-wrapper::after {
     display: none !important;
   }
