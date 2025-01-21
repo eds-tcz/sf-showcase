@@ -121,6 +121,21 @@ function createSlide(row, slideIndex, carouselId) {
   return slide;
 }
 
+// Function to dynamically add GTM script
+function addGtmScript(gtmId) {
+  const script = document.createElement('script');
+  script.async = true;
+  script.defer = true;
+  script.src = `https://www.googletagmanager.com/gtm.js?id=${gtmId}`;
+  document.head.appendChild(script);
+
+  const noscript = document.createElement('noscript');
+  noscript.innerHTML = `
+    <iframe src="https://www.googletagmanager.com/ns.html?id=${gtmId}" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  `;
+  document.body.appendChild(noscript);
+}
+
 let carouselId = 0;
 export default async function decorate(block) {
   carouselId += 1;
@@ -194,19 +209,6 @@ export default async function decorate(block) {
     startAutoSlide(block, 5000);
   }
 
-  const gtmScript = document.createElement('script');
-  gtmScript.type = 'text/javascript';
-  gtmScript.async = true;
-  gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-MTFGGWH';
-  document.head.appendChild(gtmScript); // Append the GTM script to the head
-
-  const gtmDataLayerScript = document.createElement('script');
-  gtmDataLayerScript.innerHTML = `
-    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-MTFGGWH');
-  `;
-  document.head.appendChild(gtmDataLayerScript);
+  // Add GTM script dynamically
+  addGtmScript('GTM-MTFGGWH');
 }
