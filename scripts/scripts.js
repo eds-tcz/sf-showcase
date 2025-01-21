@@ -123,11 +123,23 @@ function loadDelayed() {
 }
 
 async function loadPage() {
-  await loadEager(document);
-  await loadLazy(document);
-    loadGTM();
-  loadDelayed();
+  // Load GTM first, before any other operations
+  loadGTM();
+  
+  try {
+    await loadEager(document);
+    await loadLazy(document);
+    loadDelayed();
+  } catch (error) {
+    console.error('Error during page load:', error);
+  }
 }
 
+// Optional: Add this to ensure GTM loads even if the main script fails
+document.addEventListener('DOMContentLoaded', () => {
+  if (!window.dataLayer) {
+    loadGTM();
+  }
+});
 
 loadPage();
