@@ -115,51 +115,42 @@ async function loadLazy(doc) {
  * without impacting the user experience.
  */
 function loadDelayed() {
-  const timeout = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-  
-  // Use Promise-based setTimeout for better error handling
-  Promise.all([
-    timeout(500).then(() => import('./libs/sfb-multi-cards-ext.js')),
-    timeout(1000).then(() => import('./libs/sfb-digi-fd-ext.js')),
-    timeout(3000).then(() => import('./delayed.js'))
-  ]).catch(error => {
-    console.error('Error in delayed loading:', error);
-  });
+  // eslint-disable-next-line import/no-cycle
+  window.setTimeout(() => import('./libs/sfb-multi-cards-ext.js'), 500);
+  window.setTimeout(() => import('./libs/sfb-digi-fd-ext.js'), 1000);
+  window.setTimeout(() => import('./delayed.js'), 3000);
+  // load anything that can be postponed to the latest here
 }
 
 async function loadPage() {
-  try {
-    // Load core content first
-    await loadEager(document);
-    await loadLazy(document);
-    
-    // Load GTM separately - won't block page rendering
-    try {
-      loadGTM();
-    } catch (gtmError) {
-      console.error('GTM loading error:', gtmError);
-      // Continue loading page even if GTM fails
-    }
-    
-    // Start delayed loading
-    loadDelayed();
-    
-  } catch (error) {
-    console.error('Critical loading error:', error);
-    // At least show some content to the user
-    document.body.style.visibility = 'visible';
-  }
+  await loadEager(document);
+  await loadLazy(document);
+  loadDelayed();
+}
+// blocks/scripts/scripts.js
+
+// Load GTM in head
+export function loadHeader(block) {
+  // Google Tag Manager
+  const gtmScript = document.createElement('script');
+  gtmScript.innerHTML = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXX');`; // Replace GTM-XXXX with your ID
+  document.head.appendChild(gtmScript);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  loadPage().catch(error => {
-    console.error('Page load failed:', error);
-    // Ensure page is visible even if loading fails
-    document.body.style.visibility = 'visible';
-  });
-});
-
-// Export for module usage if needed
-export { loadDelayed, loadGTM, loadPage };
-
+// Load GTM noscript iframe in body
+export function loadFooter(block) {
+  // Google Tag Manager (noscript)
+  const gtmNoScript = document.createElement('noscript');
+  const gtmIframe = document.createElement('iframe');
+  gtmIframe.src = 'https://www.googletagmanager.com/ns.html?id=GTM-XXXX'; // Replace GTM-XXXX
+  gtmIframe.height = '0';
+  gtmIframe.width = '0';
+  gtmIframe.style = 'display:none;visibility:hidden';
+  gtmNoScript.appendChild(gtmIframe);
+  document.body.appendChild(gtmNoScript);
+}
 loadPage();
