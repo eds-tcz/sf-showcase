@@ -125,27 +125,38 @@ function loadDelayed() {
 async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
-  const { initGTM } = await import('./scripts/gtm.js');
-  initGTM();
+  try {
+    const { initGTM } = await import('./scripts/gtm.js');
+    console.log('GTM module imported successfully'); // Debug log
+    initGTM();
+  } catch (error) {
+    console.error('Error loading GTM:', error); // Error logging
+  }
   loadDelayed();
 }
 
 // scripts/gtm.js
 export function initGTM() {
-  // Google Tag Manager in head
+  console.log('GTM initialization started'); // Debug log
+  
+  // Create dataLayer first
+  window.dataLayer = window.dataLayer || [];
+  
   const gtmScript = document.createElement('script');
   gtmScript.innerHTML = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-XXXX');`; 
+  })(window,document,'script','dataLayer','GTM-XXXX');`; // Make sure your GTM ID is correct here
+  
   document.head.appendChild(gtmScript);
+  console.log('GTM script added to head');
 
   // Google Tag Manager noscript in body
   const gtmNoScript = document.createElement('noscript');
   const gtmIframe = document.createElement('iframe');
   gtmIframe.src = 'https://www.googletagmanager.com/ns.html?id=GTM-XXXX';
-  gtmIframe.height = '0';
+  gtmIframe.height = '0';initGTM
   gtmIframe.width = '0';
   gtmIframe.style = 'display:none;visibility:hidden';
   gtmNoScript.appendChild(gtmIframe);
