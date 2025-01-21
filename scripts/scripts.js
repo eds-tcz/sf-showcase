@@ -125,34 +125,30 @@ function loadDelayed() {
 async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
+  const { initGTM } = await import('./scripts/gtm.js');
+  initGTM();
   loadDelayed();
 }
 
-// blocks/scripts/scripts.js
-
-// Load GTM in head
-export function loadHeader(block) {
-  // Google Tag Manager
+// scripts/gtm.js
+export function initGTM() {
+  // Google Tag Manager in head
   const gtmScript = document.createElement('script');
   gtmScript.innerHTML = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-XXXX');`; // Replace GTM-XXXX with your ID
+  })(window,document,'script','dataLayer','GTM-XXXX');`; 
   document.head.appendChild(gtmScript);
-}
 
-// Load GTM noscript iframe in body
-export function loadFooter(block) {
-  // Google Tag Manager (noscript)
+  // Google Tag Manager noscript in body
   const gtmNoScript = document.createElement('noscript');
   const gtmIframe = document.createElement('iframe');
-  gtmIframe.src = 'https://www.googletagmanager.com/ns.html?id=GTM-XXXX'; // Replace GTM-XXXX
+  gtmIframe.src = 'https://www.googletagmanager.com/ns.html?id=GTM-XXXX';
   gtmIframe.height = '0';
   gtmIframe.width = '0';
   gtmIframe.style = 'display:none;visibility:hidden';
   gtmNoScript.appendChild(gtmIframe);
   document.body.appendChild(gtmNoScript);
 }
-
 loadPage();
