@@ -176,7 +176,7 @@
   margin: 0 !important;
 }
 
-.ql-col-3 p picture:first-child {
+.ql-col-3 p picture:first-child  img{
   padding: 0 8px 0 0;
   width: 36px !important;
   display: inline;
@@ -185,7 +185,7 @@
   height: 40px;
 }
 
-.ql-col-3 p picture:nth-child(2)
+.ql-col-3 p picture:nth-child(2) img
  {
   padding: 0 0 0 4px;
   width: 110px !important;
